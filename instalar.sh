@@ -137,7 +137,7 @@ chmod +x ${ARQ}/$1
 fun_ip
 wget -O /usr/bin/trans https://www.dropbox.com/s/l6iqf5xjtjmpdx5/trans?dl=0 &> /dev/null
 msg -bar2
-msg -ama "[ NEW - ADM - GILILLOMX ]"
+msg -ama "[ NEW - ULTIMATE - SCRIPTS ]"
 [[ $1 = "" ]] && funcao_idioma || {
 [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
  }
