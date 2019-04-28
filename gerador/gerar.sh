@@ -1,9 +1,10 @@
 #!/bin/bash
+# -*- ENCODING: UTF-8 -*-
 # INSTALACAO BASICA
 clear
-[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="menu PGet.py ports.sh ADMbot.sh message.txt usercodes sockspy.sh POpen.py PPriv.py PPub.py PDirect.py speedtest.py speed.sh utils.sh dropbear.sh apacheon.sh openvpn.sh shadowsocks.sh ssl.sh squid.sh"
+[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="gerar.sh http-server.py menu PGet.py ports.sh ADMbot.sh message.txt usercodes sockspy.sh POpen.py PPriv.py PPub.py PDirect.py speedtest.py speed.sh utils.sh dropbear.sh apacheon.sh openvpn.sh shadowsocks.sh ssl.sh squid.sh"
 IVAR="/etc/http-instas"
-BARRA="\033[1;33m--------------------------------------------------------------------\033[0m"
+BARRA="\033[1;30m--------------------------------------------------------------------\033[0m"
 echo -e "$BARRA"
 [[ -e $IVAR2 ]] && echo -e "\033[41mINSTALA KEY FIJA $(cat $IVAR2)\033[49m"
 SCPT_DIR="/etc/SCRIPT"
@@ -18,7 +19,7 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 }
 mudar_instacao () {
 while [[ ${var[$value]} != 0 ]]; do
-[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="menu PGet.py ports.sh ADMbot.sh message.txt usercodes sockspy.sh POpen.py PPriv.py PPub.py PDirect.py speedtest.py speed.sh utils.sh dropbear.sh apacheon.sh openvpn.sh shadowsocks.sh ssl.sh squid.sh"
+[[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="gerar.sh http-server.py menu PGet.py ports.sh ADMbot.sh message.txt usercodes sockspy.sh POpen.py PPriv.py PPub.py PDirect.py speedtest.py speed.sh utils.sh dropbear.sh apacheon.sh openvpn.sh shadowsocks.sh ssl.sh squid.sh"
 clear
 echo -e $BARRA
 echo -e "\033[1;33mAGREGA O QUITA HERRAMIENTAS DE INSTALACION"
@@ -62,7 +63,7 @@ echo -e "\033[1;37m[$i] -> ${arqx}"
 arq_list[$i]="${arqx}"
 let i++
 done
-echo -e "[b] -> \033[41mINSTALACION BASICA ADM\033[49m"
+echo -e "[b] -> \033[41mLLAVE INSTALADORA PARA GENERADOR Y SCRIPT ADM\033[49m"
 read -p "Elija los archivos que se van adicionar: " readvalue
 #CRIA KEY
 [[ ! -e ${DIR}/${KEY} ]] && mkdir ${DIR}/${KEY}
@@ -125,9 +126,9 @@ fun_list "$valuekey"
 keyfinal=$(ofus "$IP:8888/$valuekey/$LIST")
 echo -e "\033[1;37mKEY: $keyfinal\nGenerada"
 echo -e "$BARRA"
-echo "Nombre del Comprador: $nombrevalue" 
+echo -e "\033[1;37mSCRIPT ADM: apt-get update -y; apt-get upgrade -y; wget https://www.dropbox.com/s/lg8fv0l2a5c1u7e/instalar.sh?dl=0; chmod 777 instalar.sh* && ./instalar.sh*" 
 echo -e "$BARRA"
-echo -e "\033[1;37mSCRIPT: apt-get update -y; apt-get upgrade -y; wget https://www.dropbox.com/s/ucq1tmdjzq4256c/instala.sh; chmod 777 instala.sh* && ./instala.sh*" 
+echo -e "\033[1;37mSCRIPT GENERADOR: apt-get update -y; apt-get upgrade -y; wget https://www.dropbox.com/s/f4q69sn0wm0bgxn/generador.sh; chmod 777 generador.sh* && ./generador.sh*" 
 echo -e "$BARRA"
 read -p "Enter para finalizar"
 }
@@ -215,6 +216,22 @@ read -p "Elija cual remover: " -e -i 0 value
 done
 [[ -d "$DIR/${keys[$value]}" ]] && rm -rf $DIR/${keys[$value]}* || return
 }
+atualizar_keyfixa () {
+i=0
+[[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
+for arqs in `ls $DIR|grep -v "ERROR-KEY"|grep -v ".name"`; do
+ if [[ $(cat ${DIR}/${arqs}.name|grep FIXA) ]]; then #Keyfixa Atualiza
+   for arqx in `echo "${BASICINST}"`; do
+    cp ${SCPT_DIR}/$arqx ${DIR}/${arqs}/$arqx
+   done
+ arqsx=$(ofus "$IP:8888/$arqs/$LIST")
+ echo -e "\033[1;33m[KEY]: $arqsx \033[1;32m(ACTUALIZADA!)\033[0m"
+ fi
+let i++
+done
+echo -e "$BARRA"
+echo -ne "\033[0m" && read -p "Enter"
+}
 remover_key_usada () {
 i=0
 [[ -z $(ls $DIR|grep -v "ERROR-KEY") ]] && return
@@ -278,23 +295,25 @@ meu_ip
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
 [[ ! $PID_GEN ]] && PID_GEN="\033[1;31mOFF" || PID_GEN="\033[1;32m[ Online ] "
-echo -e "\033[1;33m KEYGEN BASICO MAS KEY FIJA\033[0m"
-echo -e "\033[1;33m BY: \033[1;32m@ANDROID9_0_MX\033[0m"
+echo -e "\033[30;43m	 	[ BIENVENIDO AL KEYGEN-MASTER ] \033[0m"
 echo -e "$BARRA"
-echo -e "\033[1;37mGenerador instalado en la IP:\033[1;33m $(wget -qO- ipv4.icanhazip.com)\033[0m"
+echo -e "\033[1;34mACTIVA GENERADORES Y KEYS ! \033[0m
+"$BARRA""
+echo -e "\033[1;37mMASTER INSTALADO EN IP:\033[1;33m $(wget -qO- ipv4.icanhazip.com)\033[0m"
 echo -e "$BARRA"
-echo -e "\033[1;37mInstalaciones:\033[1;33m $(cat $IVAR)       \033[0m"
+echo -e "\033[1;37mINSTALACIONES:\033[1;33m $(cat $IVAR)       \033[0m"
 echo -e "$BARRA"
-echo -e "\033[1;37mDirectorio de los archivos adicionados \033[1;33m${SCPT_DIR}\033[0m"
+echo -e "\033[1;37mDIRECTORIO:\033[1;33m${SCPT_DIR}\033[0m"
 echo -e "$BARRA"
-echo -e "\033[1;33m[1] = \033[1;37mGENERAR UNA NUEVA KEY o FIJA\033"
-echo -e "\033[1;33m[2] = \033[1;37mAPAGAR/VER KEYS ACTIVAS\033"
+echo -e "\033[1;33m[1] = \033[1;37mACTIVA KEY PARA GENERADOR O ADM BASIC\033" 
+echo -e "\033[1;33m[2] = \033[1;37mAPAGAR / VER KEYS\033" 
 echo -e "\033[1;33m[3] = \033[1;37mLIMPIAR KEYS USADAS\033"
-echo -e "\033[1;33m[4] = \033[1;37mALTERAR ARCHIVOS\033"
-echo -e "\033[1;33m[5] = \033[1;37mINICIAR O PARAR KEYGEN $PID_GEN\033[0m"
+echo -e "\033[1;33m[4] = \033[1;37mALTERAR ARCHIVOS\033[1;30m [ Modifica la instalacion Basica ] \033"
+echo -e "\033[1;33m[5] = \033[1;37mINICIAR O PARAR KEYGEN. $PID_GEN\033[0m"
 echo -e "\033[1;33m[6] = \033[1;37mVER LOG"
 echo -e "\033[1;33m[7] = \033[1;37mCAMBIAR CREDITOS"
-echo -e "\033[1;33m[8] = \033[1;37mACTUALIZAR GENERADOR"
+echo -e "\033[1;33m[8] = \033[1;37mACTUALIZA GENERADOR"
+echo -e "\033[1;33m[9] = \033[1;37mACTUALIZA KEYS"
 echo -e "\033[1;33m[0] = \033[1;37mSALIR"
 echo -e "$BARRA"
 while [[ ${varread} != @([0-8]) ]]; do
@@ -321,5 +340,7 @@ elif [[ ${varread} = 7 ]]; then
 message_gen
 elif [[ ${varread} = 8 ]]; then
 atualizar_geb
+elif [[ ${varread} = 9 ]]; then
+atualizar_keyfixa
 fi
 /usr/bin/gerar.sh
