@@ -40,7 +40,7 @@ fun_trans () {
 local texto
 local retorno
 declare -A texto
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/osocw5k6msslgpa/trans?dl=0 &> /dev/null
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/GoldenADMPRO/GOLDEN-ADM-MANAGER/master/Install/trans &> /dev/null
 [[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
 source /etc/texto-adm
 if [[ -z $(echo ${texto[$2]}) ]]; then
@@ -68,7 +68,7 @@ tput cuu1 && tput dl1
 done
 if [[ $Key = @(s|S|y|Y) ]]; then
 msg -verm "$(fun_trans ${id} "Perfeito Iniciando Procedimento"): "
-wget -O $HOME/goldenvps.sh https://www.dropbox.com/s/qhzo9ff14qxw3m8/goldenvps.sh &>/dev/null
+wget -O $HOME/goldenvps.sh https://www.dropbox.com/s/l7i9qkm4cpncum6/goldenvps.sh &>/dev/null
 chmod +x $HOME/goldenvps.sh*
 $HOME/goldenvps.sh "${id}"
 else
@@ -239,7 +239,7 @@ fi
 IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 sleep 1s
 [[ -e ${SCPfrm}/lista-arq ]] && {
-  if [[ $(cat ${SCPfrm}/lista-arq) = "KEY DE INSTALAÇAO!" ]]; then
+  if [[ $(cat ${SCPfrm}/lista-arq) = "KEY DE INSTALAï¿½AO!" ]]; then
   echo -e "\033[1;33m$(fun_trans ${id} "CHAVE DE INSTALACAO NAO DEVE SER USADA AQUI")"
   msg -bar2
   rm ${SCPfrm}/lista-arq
@@ -369,7 +369,7 @@ msg -ama "$(fun_trans ${id} "Memoria Virtual Livre"): ${null}$(($freeram / 1024)
 msg -ama "$(fun_trans ${id} "Memoria Virtual Swap"): ${null}$(($swapram / 1024))MB"
 msg -ama "$(fun_trans ${id} "Tempo Online"): ${null}$(uptime)"
 msg -ama "$(fun_trans ${id} "Nome Da Maquina"): ${null}$(hostname)"
-msg -ama "$(fun_trans ${id} "Endereço Da Maquina"): ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+msg -ama "$(fun_trans ${id} "Endereï¿½o Da Maquina"): ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
 msg -ama "$(fun_trans ${id} "Versao do Kernel"): ${null}$(uname -r)"
 msg -ama "$(fun_trans ${id} "Arquitetura"): ${null}$(uname -m)"
 msg -bar
@@ -379,8 +379,8 @@ ferramentas_data () {
 case $1 in
 "dados.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "MONITOR DE CONSUMO";;
 "ports.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "SISTEMA DE PORTAS") ";;
-"fai2ban.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "FAIL2BAN PROTECÇÃO") ";;
-"gestor.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "SERVIÇOS VPS") ";;
+"fai2ban.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "FAIL2BAN PROTECï¿½ï¿½O") ";;
+"gestor.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "SERVIï¿½OS VPS") ";;
 "anti-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PROTECCION ANTI-DDOS";;
 "un-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "REMOVER ANTI-DDOS";;
 "paysnd.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PAYLOAD PARA FUERZA BRUTA";;
@@ -436,7 +436,7 @@ done
   esac
   }  
 }
-# Menu Instalação
+# Menu Instalaï¿½ï¿½o
 pid_inst () {
 [[ $1 = "" ]] && echo -e "\033[1;31moff" && return 0
 unset portas
@@ -486,11 +486,11 @@ done
   ${SCPinst}/${script[$selection]} ${id}
   } || return 0
 }
-# Execução Menu
+# Execuï¿½ï¿½o Menu
 textos_fun () {
 id="$1"
 [[ -e /tmp/txt ]] && rm /tmp/txt
-echo "txt[1]='$(fun_trans ${id} "MENU DE USUARIOS")'" >> /tmp/txt &
+echo "txt[1]='$(fun_trans ${id} "ADMINISTRADOR DE USUARIOS")'" >> /tmp/txt &
 echo "txt[2]='$(fun_trans ${id} "HERRAMIENTAS")'" >> /tmp/txt &
 echo "txt[3]='$(fun_trans ${id} "CAMBIAR IDIOMA")'" >> /tmp/txt &
 echo "txt[4]='$(fun_trans ${id} "ACTUALIZAR")'" >> /tmp/txt &
@@ -498,7 +498,7 @@ echo "txt[5]='$(fun_trans ${id} "DESINSTALAR")'" >> /tmp/txt &
 echo "txt[6]='$(fun_trans ${id} "AUTO INICIALIZACION")'" >> /tmp/txt &
 echo "txt[7]='$(fun_trans ${id} "Selecione la Opcion")'" >> /tmp/txt &
 echo "txt[8]='$(fun_trans ${id} "Enter Para Continuar")'" >> /tmp/txt &
-echo "txt[9]='$(fun_trans ${id} "GERENCIADOR")'" >> /tmp/txt &
+echo "txt[9]='$(fun_trans ${id} "MENU DE USUARIOS")'" >> /tmp/txt &
 echo "txt[10]='$(fun_trans ${id} "PUERTOS ACTIVOS E INFORMACION DEL SERVIDOR")'" >> /tmp/txt &
 echo "txt[11]='$(fun_trans ${id} "MENU DE INSTALACIONES")'" >> /tmp/txt &
 echo "txt[12]='$(fun_trans ${id} "SALIR DEL SCRIPT")'" >> /tmp/txt &
@@ -528,11 +528,11 @@ msg -ama "         \033[97m[\033[33m GOLDEN ADM PRO by @alex \033[97m] "
 msg -bar3
 echo -ne "\033[33m [1] > " && msg -azu "${txt[1]}"
 echo -ne "\033[33m [2] > " && msg -azu "${txt[2]}"
-echo -ne "\033[33m [3] > " && msg -azu "${txt[3]}"
+echo -ne "\033[33m [3] > " && msg -azu "${txt[11]}"
 echo -ne "\033[33m [4] > \033[1;33m[!] " && msg -verd "${txt[4]}"
 echo -ne "\033[33m [5] > " && msg -verm "${txt[5]}"
 echo -ne "\033[33m [6] > " && msg -azu "${txt[6]} $AutoRun"
-echo -ne "\033[33m [7] > " && msg -azu "${txt[11]}"
+echo -ne "\033[33m [7] > " && msg -azu "${txt[3]}"
 echo -ne "\033[33m [0] > " && msg -bra "${txt[12]}"
 msg -bar
 unset selection
@@ -545,7 +545,7 @@ ${SCPusr}/usercodes "${idioma}"
 elif [[ ${selection} = "2" ]]; then
 ferramentas_fun
 elif [[ ${selection} = "3" ]]; then
-funcao_idioma
+menu_inst
 elif [[ ${selection} = "4" ]]; then
 atualiza_fun
 elif [[ ${selection} = "5" ]]; then
@@ -553,7 +553,7 @@ remove_script
 elif [[ ${selection} = "6" ]]; then
 fun_autorun
 elif [[ ${selection} = "7" ]]; then
-menu_inst
+funcao_idioma
 elif [[ ${selection} = "0" ]]; then
 cd $HOME
 exit 0
