@@ -123,7 +123,7 @@ echo -e "$barra"
 fun_bar "apt-get install stunnel4 -y"
 echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:${DPORT}\naccept = ${SSLPORT}" > /etc/stunnel/stunnel.conf
 openssl genrsa -out key.pem 2048 > /dev/null 2>&1
-(echo DS; echo @DEADSSHOT593; echo VENTA DE VPS DE PAGA; echo WHATSAPP +593996534252; echo TELEGRAM @DEADSHOT593; echo @DEADSHOT593; echo @aDEADSHOT593)|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
+(echo DS; echo @ALEX_MX; echo VENTA DE VPS DE PAGA; echo WHATSAPP +526672374392; echo TELEGRAM @ALEX-MX; echo @ALEX_MX; echo @ALEX_MX)|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 service stunnel4 restart > /dev/null 2>&1
