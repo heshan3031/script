@@ -3,13 +3,12 @@
 clear
 [[ -e /etc/newadm-instalacao ]] && BASICINST="$(cat /etc/newadm-instalacao)" || BASICINST="menu PGet.py ports.sh ADMbot.sh message.txt usercodes sockspy.sh POpen.py PPriv.py PPub.py PDirect.py speedtest.py speed.sh utils.sh dropbear.sh apacheon.sh openvpn.sh shadowsocks.sh ssl.sh squid.sh"
 IVAR="/etc/http-instas"
-Version="\e[1;34mORIGINAL"
-BARRA="\033[1;36m--------------------------------------------------------------------\033[0m"
+BARRA="\033[1;36m------------------------------------------------------------------\033[0m"
 echo -e "$BARRA"
 cat << EOF
 
            NEW KEY GENERADOR BY @Alexmod80
-           Version : $Version
+           Version : ORIGINAL
            INSTALACIONES: $(cat $IVAR)
            
 EOF
@@ -279,7 +278,7 @@ echo -e "[1] = GENERAR 1 KEY ALEATORIA"
 echo -e "[2] = APAGAR/O VER KEYS"
 echo -e "[3] = LIMPAR KEYS USADAS"
 echo -e "[4] = ALTERAR ARQUIVOS KEY BASICA"
-echo -e "[5] = START/STOP KEYGEN $PID_GEN\033[0m"
+echo -e "[5] = START/STOP KEYGEN \e[1;34m$PID_GEN\033[0m"
 echo -e "[6] = VER LOG"
 echo -e "[7] = CAMBIAR MENSAGE"
 echo -e "[0] = SALIR"
