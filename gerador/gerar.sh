@@ -250,6 +250,9 @@ read -p "NEW MESSAGE: " MSGNEW
 echo "$MSGNEW" > ${SCPT_DIR}/message.txt
 echo -e "$BARRA"
 }
+actualizar (){
+echo -e "\e[1;31AUN NO DISPONIBLE"
+}
 rmv_iplib () {
 echo -e "SERVIDORES DE KEY ATIVOS!"
 rm /var/www/html/newlib && touch /var/www/html/newlib
@@ -270,7 +273,7 @@ read -p "Enter"
 meu_ip
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
-[[ ! $PID_GEN ]] && PID_GEN="\033[1;31moff" || PID_GEN="\033[1;32monline"
+[[ ! $PID_GEN ]] && PID_GEN="\033[1;31moff" || PID_GEN="\033[1;34monline"
 echo -e "$BARRA"
 echo -e "Directorio \033[1;31m${SCPT_DIR}\033[0m"
 echo -e "$BARRA"
@@ -281,10 +284,11 @@ echo -e "[4] = ALTERAR ARQUIVOS KEY BASICA"
 echo -e "[5] = START/STOP KEYGEN \e[1;34m$PID_GEN\033[0m"
 echo -e "[6] = VER LOG"
 echo -e "[7] = CAMBIAR MENSAGE"
+echo -e "[8] = ACTUALIZAR"
 echo -e "[0] = SALIR"
 echo -e "$BARRA"
 while [[ ${varread} != @([0-8]) ]]; do
-read -p "Opcao: " varread
+read -p "Elija Una Opcion: " varread
 done
 echo -e "$BARRA"
 if [[ ${varread} = 0 ]]; then
@@ -305,5 +309,7 @@ cat /etc/gerar-sh-log 2>/dev/null || echo "NENHUM LOG NO MOMENTO"
 echo -ne "\033[0m" && read -p "Enter"
 elif [[ ${varread} = 7 ]]; then
 message_gen
+elif [[ ${varread} = 8 ]]; then
+actualizar
 fi
 /usr/bin/gerar.sh
