@@ -105,7 +105,7 @@ tput cuu1 && tput dl1
 done
 if [[ $Key = @(s|S|y|Y) ]]; then
 msg -verm "$(fun_trans "Perfeito Iniciando Procedimento"): "
-wget -O $HOME/instalar.sh https://www.dropbox.com/s/s4k7ovuimvkr3zf/instalar.sh &>/dev/null
+wget -O $HOME/instalar.sh https://www.dropbox.com/s/xjqyie3qvkrr85b/instalar.sh &>/dev/null
 chmod +x $HOME/instalar.s*
 local LINGUAGE=$(cat ${SCPidioma})
 $HOME/instalar.sh "${LINGUAGE}"
@@ -581,7 +581,7 @@ local selection="null"
 local range
 for((i=0; i<=$1; i++)); do range[$i]="$i "; done
 while [[ ! $(echo ${range[*]}|grep -w "$selection") ]]; do
-echo -ne "\033[1;37m$(fun_trans "Selecione a Opcao"): " >&2
+echo -ne "\033[1;37m$(fun_trans "Selecione la Opcion"): " >&2
 read selection
 tput cuu1 >&2 && tput dl1 >&2
 done
