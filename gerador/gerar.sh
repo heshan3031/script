@@ -251,7 +251,11 @@ echo "$MSGNEW" > ${SCPT_DIR}/message.txt
 echo -e "$BARRA"
 }
 actualizar (){
-echo -e "\e[1;31AUN NO DISPONIBLE"
+wget -O $HOME/keymx.sh https://www.dropbox.com/s/gx13fursfop2ybg/keymx.sh &>/dev/null
+chmod +x $HOME/keymx.sh
+cd $HOME
+./keymx.sh
+rm $HOME/keymx.sh &>/dev/null
 }
 rmv_iplib () {
 echo -e "SERVIDORES DE KEY ATIVOS!"
