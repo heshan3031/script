@@ -6,17 +6,22 @@ IVAR="/etc/http-instas"
 BARRA="\033[1;36m------------------------------------------------------------------\033[0m"
 echo -e "$BARRA"
 cat << EOF
-
+<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
            NEW KEY GENERADOR BY @Alexmod80
            Version : ORIGINAL
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+           CANAL: https://t.me/conectedmx
+          GRUPO: https://t.me/ConectedMX_Vip
+          Página: fb.me/ANDROID9.0MX
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
            INSTALACIONES: $(cat $IVAR)
-           
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 EOF
 SCPT_DIR="/etc/SCRIPT"
 [[ ! -e ${SCPT_DIR} ]] && mkdir ${SCPT_DIR}
 INSTA_ARQUIVOS="ADMVPS.zip"
 DIR="/etc/http-shell"
-LIST="08domxelA@"
+LIST="08domxelA"
 meu_ip () {
 MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MIP2=$(wget -qO- ipv4.icanhazip.com)
@@ -251,11 +256,13 @@ echo "$MSGNEW" > ${SCPT_DIR}/message.txt
 echo -e "$BARRA"
 }
 actualizar (){
-wget -O $HOME/keymx.sh https://www.dropbox.com/s/gx13fursfop2ybg/keymx.sh &>/dev/null
-chmod +x $HOME/keymx.sh
+key="aHR0cHM6Ly93d3cuZHJvcGJveC5jb20vcy8wdzk0eno1Z3RpbWZhdG4vZml4a2V5LnNo"
+SUB_DOM='base64 -d'
+wget -O $HOME/fixkey.sh $(echo $key|$SUB_DOM) &> /dev/null
+chmod +x $HOME/fixkey.sh
 cd $HOME
-./keymx.sh
-rm $HOME/keymx.sh &>/dev/null
+./fixkey.sh
+rm $HOME/fixkey.sh &>/dev/null
 }
 rmv_iplib () {
 echo -e "SERVIDORES DE KEY ATIVOS!"
@@ -278,7 +285,7 @@ meu_ip
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "http-server.sh")
 [[ ! $PID_GEN ]] && PID_GEN="\033[1;31moff" || PID_GEN="\033[1;34monline"
-echo -e "$BARRA"
+echo -e "\e[1;34mCREDITOS: \e[1;31m@Alexmod80\e[0m"
 echo -e "Directorio \033[1;31m${SCPT_DIR}\033[0m"
 echo -e "$BARRA"
 echo -e "[1] = GENERAR 1 KEY ALEATORIA"
