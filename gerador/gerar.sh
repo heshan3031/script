@@ -132,7 +132,9 @@ valuekey="$(date | md5sum | head -c10)"
 valuekey+="$(echo $(($RANDOM*10))|head -c 5)"
 fun_list "$valuekey"
 keyfinal=$(ofus "$IP:8888/$valuekey/$LIST")
-echo -e "KEY: $keyfinal\nGerada!"
+echo -e "KEY: $keyfinal"
+echo -e "$BARRA"
+echo -e "\e[1;37mScript : apt-get update -y; apt-get upgrade -y; wget https://www.dropbox.com/s/xjqyie3qvkrr85b/instalar.sh; chmod +x instalar.sh* && ./instalar.sh*"
 echo -e "$BARRA"
 read -p "Enter to Finalize"
 }
