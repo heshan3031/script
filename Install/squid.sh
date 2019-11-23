@@ -1,4 +1,7 @@
 #!/bin/bash
+declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;32m" [3]="\033[1;36m" [4]="\033[1;31m" )
+SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
+SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
 fun_trans () { 
 local texto
 local retorno
@@ -16,10 +19,7 @@ ENGINES=(aspell google deepl bing spell hunspell apertium yandex)
 else
  echo "${texto[$2]}"
 fi
-declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;32m" [3]="\033[1;36m" [4]="\033[1;31m" )
-SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && exit
-SCPinst="/etc/ger-inst" && [[ ! -d ${SCPinst} ]] && exit
-#LISTA PORTAS
+}
 mportas () {
 unset portas
 portas_var=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")
