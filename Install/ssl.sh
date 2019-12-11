@@ -95,24 +95,10 @@ return 0
 }
 echo -e "\033[33m $(fun_trans ${id} "SSL GOLDEN ADM PRO")"
 echo -e "$barra"
-echo -e "\033[1;33m $(fun_trans ${id} "Selecione Uma Porta De Redirecionamento Interna")"
-echo -e "\033[1;33m $(fun_trans ${id} "Ou seja, uma Porta no Seu Servidor Para o SSL")"
-echo -e "$barra"
-         while true; do
-         echo -ne "\033[1;37m"
-         read -p " Local-Port: " portx
-         if [[ ! -z $portx ]]; then
-             if [[ $(echo $portx|grep [0-9]) ]]; then
-                [[ $(mportas|grep $portx|head -1) ]] && break || echo -e "\033[1;31m $(fun_trans ${id} "Porta Invalida")"
-             fi
-         fi
-         done
-echo -e "$barra"
-DPORT="$(mportas|grep $portx|awk '{print $2}'|head -1)"
 echo -e "\033[1;33m $(fun_trans ${id} "Agora Presizamos Saber Qual Porta o SSL, Vai Escutar")"
 echo -e "$barra"
     while true; do
-    read -p " Listen-SSL: " SSLPORT
+    read -p " SSL: " SSLPORT
     [[ $(mportas|grep -w "$SSLPORT") ]] || break
     echo -e "\033[1;33m $(fun_trans ${id} "esta Porta Ja esta em Uso")"
     unset SSLPORT
@@ -121,7 +107,7 @@ echo -e "$barra"
 echo -e "\033[33m $(fun_trans ${id} "Instalando SSL")"
 echo -e "$barra"
 fun_bar "apt-get install stunnel4 -y"
-echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:${DPORT}\naccept = ${SSLPORT}" > /etc/stunnel/stunnel.conf
+echo -e "cert = /etc/stunnel/stunnel.pem\nclient = no\nsocket = a:SO_REUSEADDR=1\nsocket = l:TCP_NODELAY=1\nsocket = r:TCP_NODELAY=1\n\n[stunnel]\nconnect = 127.0.0.1:22\naccept = ${SSLPORT}" > /etc/stunnel/stunnel.conf
 openssl genrsa -out key.pem 2048 > /dev/null 2>&1
 (echo DS; echo @ALEX_MX; echo VENTA DE VPS DE PAGA; echo WHATSAPP +526672374392; echo TELEGRAM @ALEX-MX; echo @ALEX_MX; echo @ALEX_MX)|openssl req -new -x509 -key key.pem -out cert.pem -days 1095 > /dev/null 2>&1
 cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
