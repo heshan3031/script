@@ -21,7 +21,7 @@ fi
 # Funcoes Globais
 msg () {
 BRAN='\033[33m' && VERMELHO='\e[31m'
-VERDE='\e[33m' && AMARELO='\e[33m'
+VERDE='\e[32m' && AMARELO='\e[33m'
 AZUL='\e[33m' && MAGENTA='\e[35m'
 MAG='\033[33m' && NEGRITO='\e[1m'
 SEMCOR='\e[0m'
@@ -370,7 +370,7 @@ msg -ama "$(fun_trans ${id} "Memoria Virtual Livre"): ${null}$(($freeram / 1024)
 msg -ama "$(fun_trans ${id} "Memoria Virtual Swap"): ${null}$(($swapram / 1024))MB"
 msg -ama "$(fun_trans ${id} "Tempo Online"): ${null}$(uptime)"
 msg -ama "$(fun_trans ${id} "Nome Da Maquina"): ${null}$(hostname)"
-msg -ama "$(fun_trans ${id} "Endere�o Da Maquina"): ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
+msg -ama "$(fun_trans ${id} "Endereco Da Maquina"): ${null}$(ip addr | grep inet | grep -v inet6 | grep -v "host lo" | awk '{print $2}' | awk -F "/" '{print $1}')"
 msg -ama "$(fun_trans ${id} "Versao do Kernel"): ${null}$(uname -r)"
 msg -ama "$(fun_trans ${id} "Arquitetura"): ${null}$(uname -m)"
 msg -bar
@@ -380,8 +380,8 @@ ferramentas_data () {
 case $1 in
 "dados.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "MONITOR DE CONSUMO";;
 "ports.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "SISTEMA DE PORTAS") ";;
-"fai2ban.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "FAIL2BAN PROTEC��O") ";;
-"gestor.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "SERVI�OS VPS") ";;
+"fai2ban.sh")echo -ne "\033[1;32m [$2] > " && msg -ama "$(fun_trans ${id} "FAIL2BAN PROTECÇÃO") ";;
+"gestor.sh")echo -ne "\033[1;32m [$2] > " && msg -ama "$(fun_trans ${id} "SERVIÇOS VPS") ";;
 "anti-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PROTECCION ANTI-DDOS";;
 "un-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "REMOVER ANTI-DDOS";;
 "paysnd.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PAYLOAD PARA FUERZA BRUTA";;
@@ -466,7 +466,7 @@ esac
 }
 menu_inst () {
 menuTXT="$(fun_trans ${id} "VOLTAR")"
-msg -ama "$(fun_trans ${id} "MENU DE INSTALACION")"
+msg -ama "$(fun_trans ${id} "MENU DE INSTALACAO")"
 msg -bar
 i=1
 for arqs in $(ls ${SCPinst}); do
@@ -491,18 +491,18 @@ done
 textos_fun () {
 id="$1"
 [[ -e /tmp/txt ]] && rm /tmp/txt
-echo "txt[1]='$(fun_trans ${id} "ADMINISTRADOR DE USUARIOS")'" >> /tmp/txt &
-echo "txt[2]='$(fun_trans ${id} "HERRAMIENTAS")'" >> /tmp/txt &
-echo "txt[3]='$(fun_trans ${id} "CAMBIAR IDIOMA")'" >> /tmp/txt &
+echo "txt[1]='$(fun_trans ${id} "GERENCIAR USUARIOS")'" >> /tmp/txt &
+echo "txt[2]='$(fun_trans ${id} "FERRAMENTAS")'" >> /tmp/txt &
+echo "txt[3]='$(fun_trans ${id} "MENU DE INSTALACOES")'" >> /tmp/txt &
 echo "txt[4]='$(fun_trans ${id} "ACTUALIZAR")'" >> /tmp/txt &
 echo "txt[5]='$(fun_trans ${id} "DESINSTALAR")'" >> /tmp/txt &
 echo "txt[6]='$(fun_trans ${id} "AUTO INICIALIZACION")'" >> /tmp/txt &
-echo "txt[7]='$(fun_trans ${id} "Selecione la Opcion")'" >> /tmp/txt &
-echo "txt[8]='$(fun_trans ${id} "Enter Para Continuar")'" >> /tmp/txt &
-echo "txt[9]='$(fun_trans ${id} "MENU DE USUARIOS")'" >> /tmp/txt &
-echo "txt[10]='$(fun_trans ${id} "PUERTOS ACTIVOS E INFORMACION DEL SERVIDOR")'" >> /tmp/txt &
-echo "txt[11]='$(fun_trans ${id} "MENU DE INSTALACIONES")'" >> /tmp/txt &
-echo "txt[12]='$(fun_trans ${id} "SALIR DEL SCRIPT")'" >> /tmp/txt &
+echo "txt[7]='$(fun_trans ${id} "TROCAR IDIOMA")'" >> /tmp/txt &
+echo "txt[8]='$(fun_trans ${id} "Selecione a Opcao")'" >> /tmp/txt &
+echo "txt[9]='$(fun_trans ${id} "Enter Para Continuar")'" >> /tmp/txt &
+echo "txt[10]='$(fun_trans ${id} "GERENCIADOR")'" >> /tmp/txt &
+echo "txt[11]='$(fun_trans ${id} "PUERTOS ACTIVOS E INFORMACION DEL SERVIDOR")'" >> /tmp/txt &
+echo "txt[12]='$(fun_trans ${id} "SAIR DO SCRIPT")'" >> /tmp/txt &
 while [[ ! -e /tmp/txt || $(cat /tmp/txt|wc -l) -lt "12"  ]]; do
 continue
 done
@@ -513,7 +513,7 @@ idioma=$(cat ${SCPidioma})
 [[ -z ${idioma} ]] && textos_fun pt || textos_fun ${idioma}
 clear
 msg -bar
-msg -ama "${txt[10]}"
+msg -ama "${txt[11]}"
 msg -bar3
 mine_port
 msg -bar3
@@ -525,20 +525,20 @@ msg -bar3
 [[ -e ${SCPdir}/message.txt ]] && msg -bra "DISTRIBUIDOR: $(cat ${SCPdir}/message.txt)"
 msg -bar3
 msg -ama ">>>>>>>>\033[97m[\033[33m PANEL DE ADMINISTRACION PARA VPS \033[97m]\033[33m<<<<<<<< "
-msg -ama "         \033[97m[\033[33m GOLDEN ADM PRO by @alex \033[97m] "
+msg -ama "         \033[97m[\033[33m GOLDEN \e[1;34mNEWADM\e[33m by @alex \033[97m] "
 msg -bar3
-echo -ne "\033[33m [1] > " && msg -azu "${txt[1]}"
-echo -ne "\033[33m [2] > " && msg -azu "${txt[2]}"
-echo -ne "\033[33m [3] > " && msg -azu "${txt[11]}"
-echo -ne "\033[33m [4] > \033[1;33m[!] " && msg -verd "${txt[4]}"
+echo -ne "\033[33m [1] > " && msg -verd "${txt[1]}"
+echo -ne "\033[33m [2] > " && msg -verm "${txt[2]}"
+echo -ne "\033[33m [3] > " && msg -ama "${txt[3]}"
+echo -ne "\033[33m [4] > " && msg -verd "${txt[4]}"
 echo -ne "\033[33m [5] > " && msg -verm "${txt[5]}"
 echo -ne "\033[33m [6] > " && msg -azu "${txt[6]} $AutoRun"
-echo -ne "\033[33m [7] > " && msg -azu "${txt[3]}"
+echo -ne "\033[33m [7] > " && msg -azu "${txt[7]}"
 echo -ne "\033[33m [0] > " && msg -bra "${txt[12]}"
 msg -bar
 unset selection
 while [[ ${selection} != @([0-7]) ]]; do
-echo -ne "\033[33m${txt[7]}: " && read selection
+echo -ne "\033[33m${txt[8]}: " && read selection
 tput cuu1 && tput dl1
 done
 if [[ ${selection} = "1" ]]; then
@@ -559,5 +559,5 @@ elif [[ ${selection} = "0" ]]; then
 cd $HOME
 exit 0
 fi
-msg -ne "${txt[8]}" && read enter
+msg -ne "${txt[9]}" && read enter
 ${SCPdir}/menu
