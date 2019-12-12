@@ -1,1 +1,1 @@
-GOLDEN ADM PRO SCRIPT
+\e[44;1;33mGolden\e[44;1;37m Keys\e[44;1;35m Mx\e[0m

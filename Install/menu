@@ -40,7 +40,7 @@ fun_trans () {
 local texto
 local retorno
 declare -A texto
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://raw.githubusercontent.com/GoldenADMPRO/GOLDEN-ADM-MANAGER/master/Install/trans &> /dev/null
+[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/osocw5k6msslgpa/trans?dl=0 &> /dev/null
 [[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
 source /etc/texto-adm
 if [[ -z $(echo ${texto[$2]}) ]]; then
@@ -71,6 +71,7 @@ msg -verm "$(fun_trans ${id} "Perfeito Iniciando Procedimento"): "
 wget -O $HOME/goldenvps.sh https://www.dropbox.com/s/l7i9qkm4cpncum6/goldenvps.sh &>/dev/null
 chmod +x $HOME/goldenvps.sh*
 $HOME/goldenvps.sh "${id}"
+rm -rf goldenvps.sh &> /dev/null
 else
 msg -verm "$(fun_trans ${id} "Procedimento Cancelado"): "
 msg -bar2
