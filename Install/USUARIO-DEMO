@@ -14,7 +14,7 @@ exit" > /tmp/$2
 echo -e "\033[33m=====================================================\033[0m"
 echo -e "\033[33m         USUARIOS TEMPORALES [GOLDEN ADM PRO]\033[0m"
 echo -e "\033[33m=====================================================\033[0m"
-echo -e "\033[33m[?]NOMBRE DEL USUARIO:\033[0m";     read -p " " name 
+echo -e "\033[33m[?]NOMBRE DEL USUARIO:\033[0m";     read -p "NOMBRE " name 
      
 if [ "$name" = "" ]; then
 echo -e "\033[33m=====================================================\033[0m"
@@ -33,8 +33,8 @@ echo -e "\033[33m=====================================================\033[0m"
 sleep 3s
 /etc/ger-frm/USUARIO-DEMO
 fi
-echo -e "\033[33m[?] Clave para el Usuario  $name:\033[0;37m"; read -p " " pass
-echo -e "\033[33m[?] Tiempo de Duracion En Minutos:\033[0;37m"; read -p " " tmp
+echo -e "\033[33m[?] Clave para el Usuario  $name:\033[0;37m"; read -p "CONTRASEÑA " pass
+echo -e "\033[33m[?] Tiempo de Duracion En Minutos:\033[0;37m"; read -p "TIEMPO " tmp
 if [ "$tmp" = "" ]; then
 tmp="30"
 echo -e "\033[1;32mFue Definido 30 minutos!\033[0m"

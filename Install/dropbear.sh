@@ -118,7 +118,7 @@ sysvar=$(cat -n /etc/issue |grep 1 |cut -d' ' -f6,7,8 |sed 's/1//' |sed 's/     
 echo -e "Port 22
 Protocol 2
 KeyRegenerationInterval 3600
-ServerKeyBits 1024
+ServerKeyBits 2048
 SyslogFacility AUTH
 LogLevel INFO
 LoginGraceTime 120
@@ -161,7 +161,7 @@ sed -i "s/VAR//g" /etc/default/dropbear
 echo -e "Port 22
 Protocol 2
 KeyRegenerationInterval 3600
-ServerKeyBits 1024
+ServerKeyBits 2048
 SyslogFacility AUTH
 LogLevel INFO
 LoginGraceTime 120

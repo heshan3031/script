@@ -28,7 +28,7 @@ SEMCOR='\e[0m'
  case $1 in
   -ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
   -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -verm)cor="${AMARELO}${NEGRITO}[!] ${VERMELHO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verm)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${BRAN}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
@@ -115,7 +115,7 @@ done
 msg -bar3
 unset selection
 while [[ ${selection} != @([1-8]) ]]; do
-echo -ne "\033[33m${txt[7]}: " && read selection
+echo -ne "\033[33m${txt[8]}: " && read selection
 tput cuu1 && tput dl1
 done
 [[ -e /etc/texto-adm ]] && rm /etc/texto-adm
@@ -318,7 +318,7 @@ system=$(echo $(cat -n /etc/issue |grep 1 |cut -d' ' -f6,7,8 |sed 's/1//' |sed '
 echo $system|awk '{print $1, $2}'
 }
 remove_script () {
-msg -ama "$(fun_trans ${id} "CONFIRMA REMOCAO TOTAL DOS SCRIPTS")?"
+msg -ama "$(fun_trans ${id} "CONFIRMA PARA ELIMINACION TOTAL DEL SCRIPTS")?"
 msg -bar
 while [[ ${yesno} != @(s|S|y|Y|n|N) ]]; do
 read -p "[S/N]: " yesno
@@ -385,6 +385,7 @@ case $1 in
 "anti-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PROTECCION ANTI-DDOS";;
 "un-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "REMOVER ANTI-DDOS";;
 "paysnd.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PAYLOAD PARA FUERZA BRUTA";;
+"panelRoot.sh")echo -ne "\033[1;32m [$2] > " && msg -ne "PERMISO ROOT/VULTR/GoogleCloud/Amazon/Azure";;
 "apacheon.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "COMPARTILHAR ARQUIVO ONLINE") ";;
 "utils.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "Badvpn/tcpspeed/squidcache/torrent";;
 "speed.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "TESTE DE VELOCIDADE") ";;
@@ -480,7 +481,7 @@ msg -bar
 script[0]="voltar"
 selection=999
 while [[ -z ${script[$selection]} ]]; do
-echo -ne "\033[33m${txt[7]}: " && read selection
+echo -ne "\033[33m${txt[8]}: " && read selection
 tput cuu1 && tput dl1
 done
 [[ -e "${SCPinst}/${script[$selection]}" ]] && {
@@ -493,12 +494,12 @@ id="$1"
 [[ -e /tmp/txt ]] && rm /tmp/txt
 echo "txt[1]='$(fun_trans ${id} "GERENCIAR USUARIOS")'" >> /tmp/txt &
 echo "txt[2]='$(fun_trans ${id} "FERRAMENTAS")'" >> /tmp/txt &
-echo "txt[3]='$(fun_trans ${id} "MENU DE INSTALACOES")'" >> /tmp/txt &
+echo "txt[3]='$(fun_trans ${id} "MENU DE INSTALACIONES")'" >> /tmp/txt &
 echo "txt[4]='$(fun_trans ${id} "ACTUALIZAR")'" >> /tmp/txt &
 echo "txt[5]='$(fun_trans ${id} "DESINSTALAR")'" >> /tmp/txt &
 echo "txt[6]='$(fun_trans ${id} "AUTO INICIALIZACION")'" >> /tmp/txt &
 echo "txt[7]='$(fun_trans ${id} "TROCAR IDIOMA")'" >> /tmp/txt &
-echo "txt[8]='$(fun_trans ${id} "Selecione a Opcao")'" >> /tmp/txt &
+echo "txt[8]='$(fun_trans ${id} "Selecione una Opcion")'" >> /tmp/txt &
 echo "txt[9]='$(fun_trans ${id} "Enter Para Continuar")'" >> /tmp/txt &
 echo "txt[10]='$(fun_trans ${id} "GERENCIADOR")'" >> /tmp/txt &
 echo "txt[11]='$(fun_trans ${id} "PUERTOS ACTIVOS E INFORMACION DEL SERVIDOR")'" >> /tmp/txt &
@@ -520,12 +521,11 @@ msg -bar3
 msg -ne "\033[33mSISTEMA: " && echo -e "$(os_system)  "
 msg -ne "\033[33mSERVIDOR IP: " && echo -e "$(meu_ip)"
 [[ -e ${SCPdir}/USRonlines ]] && msg -ne "\033[33mUSUARIOS CONECTADOS: " && echo -e "\033[1;32m$(cat ${SCPdir}/USRonlines) "
-[[ -e ${SCPdir}/USRexpired ]] && msg -ne "\033[33mUSUARIOS VENCIDOS: " && echo -e "\033[1;32m$(cat ${SCPdir}/USRexpired)"
+[[ -e ${SCPdir}/USRexpired ]] && msg -ne "\033[33mUSUARIOS VENCIDOS: " && echo -e "\033[1;31m$(cat ${SCPdir}/USRexpired)"
 msg -bar3
-[[ -e ${SCPdir}/message.txt ]] && msg -bra "DISTRIBUIDOR: $(cat ${SCPdir}/message.txt)"
+[[ -e ${SCPdir}/message.txt ]] && msg -bra "MENSAGE: $(cat ${SCPdir}/message.txt)"
 msg -bar3
-msg -ama ">>>>>>>>\033[97m[\033[33m PANEL DE ADMINISTRACION PARA VPS \033[97m]\033[33m<<<<<<<< "
-msg -ama "         \033[97m[\033[33m GOLDEN \e[1;34mNEWADM\e[33m by @alex \033[97m] "
+msg -ama "GOLDEN \e[1;31mNEWADM\e[36mBy @alexmod80 \033[97m] "
 msg -bar3
 echo -ne "\033[33m [1] > " && msg -verd "${txt[1]}"
 echo -ne "\033[33m [2] > " && msg -verm "${txt[2]}"
