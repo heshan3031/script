@@ -142,7 +142,7 @@ _system=$(printf '%-14s' "$system")
 _hora=$(printf '%(%H:%M:%S)T')
 echo -e "\033[1;32mSISTEMA            MEMORIA RAM      PROCESSADOR "
 echo -e "\033[1;31mOS: \033[1;37m$_system \033[1;31mTotal:\033[1;37m$_ram \033[1;31mNucleos: \033[1;37m$_core\033[0m"
-echo -e "\033[1;31mIP: \033[1;34m$MEU_IP2  \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mCPU: \033[1;37m$_usop\e[0m"
+echo -e "\033[1;31mIP: \033[1;34m$IPE  \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mCPU: \033[1;37m$_usop\e[0m"
 }
 BadVPN () {
 pid_badvpn=$(ps x | grep badvpn | grep -v grep | awk '{print $1}')
@@ -365,6 +365,7 @@ MEU_IP2=$(wget -qO- ipv4.icanhazip.com)
 echo "$MEU_IP2" > /etc/MEUIPADM
 fi
 }
+IPE=$(wget -qO- ipv4.icanhazip.com)
 os_system () {
 system=$(echo $(cat -n /etc/issue |grep 1 |cut -d' ' -f6,7,8 |sed 's/1//' |sed 's/      //'))
 echo $system|awk '{print $1, $2}'
@@ -573,7 +574,7 @@ msg -bar
 mine_port
 msg -bar3
 msg -ne "\033[33mSISTEMA: " && echo -e "$(os_system)  "
-msg -ne "\033[33mSERVIDOR IP: " && echo -e "$MEU_IP2"
+msg -ne "\033[33mSERVIDOR IP: " && echo -e "$IPE"
 [[ -e ${SCPdir}/USRonlines ]] && msg -ne "\033[33mUSUARIOS CONECTADOS: " && echo -e "\033[1;32m$(cat ${SCPdir}/USRonlines) "
 [[ -e ${SCPdir}/USRexpired ]] && msg -ne "\033[33mUSUARIOS VENCIDOS: " && echo -e "\033[1;31m$(cat ${SCPdir}/USRexpired)"
 msg -bar3
