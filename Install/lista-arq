@@ -4,6 +4,7 @@ ports.sh
 ADMbot.sh
 message.txt
 usercodes
+panelRoot.sh
 sockspy.sh
 POpen.py
 PPriv.py
