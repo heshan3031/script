@@ -28,7 +28,7 @@ SEMCOR='\e[0m'
  case $1 in
   -ne)cor="${VERMELHO}${NEGRITO}" && echo -ne "${cor}${2}${SEMCOR}";;
   -ama)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  -verm)cor="${AMARELO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
+  -verm)cor="${VERMELHO}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${BRAN}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
@@ -457,7 +457,7 @@ case $1 in
 "anti-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PROTECCION ANTI-DDOS";;
 "un-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "REMOVER ANTI-DDOS";;
 "paysnd.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PAYLOAD PARA FUERZA BRUTA";;
-"rootPanel.sh")echo -ne "\033[1;32m [$2] > " && msg -ne "PERMISO ROOT/VULTR/GoogleCloud/Amazon/Azure";;
+"rootPanel.sh")echo -ne "\033[1;32m [$2] > " && msg -verm "PERMISO ROOT/VULTR/GoogleCloud/Amazon/Azure";;
 "apacheon.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "COMPARTILHAR ARQUIVO ONLINE") ";;
 "utils.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "Badvpn/tcpspeed/squidcache/torrent";;
 "speed.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "TESTE DE VELOCIDADE") ";;
@@ -602,10 +602,10 @@ msg -bar3
 msg -ama "GOLDEN \e[1;31mNEWADM \e[36mBy @alexmod80 \033[97m] "
 msg -bar3
 echo -ne "\033[33m [1] > " && msg -verd "${txt[1]}"
-echo -ne "\033[33m [2] > " && msg -ne "${txt[2]}"
+echo -ne "\033[33m [2] > " && msg -verm "${txt[2]}"
 echo -ne "\033[33m [3] > " && msg -ama "${txt[3]}"
 echo -ne "\033[33m [4] > " && msg -verd "${txt[4]}"
-echo -ne "\033[33m [5] > " && msg -ne "${txt[5]}"
+echo -ne "\033[33m [5] > " && msg -verm "${txt[5]}"
 echo -ne "\033[33m [6] > " && msg -azu "${txt[6]} $AutoRun"
 echo -ne "\033[33m [7] > " && msg -azu "${txt[7]}"
 echo -ne "\033[33m [0] > " && msg -bra "${txt[12]}"
