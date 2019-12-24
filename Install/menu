@@ -605,9 +605,9 @@ echo -e "\033[33m [1] > \e[1;32m ${txt[1]}"
 echo -e "\033[33m [2] > \e[1;31m ${txt[2]}"
 echo -e "\033[33m [3] > \e[1;33m ${txt[3]}"
 echo -e "\033[33m [4] > \e[1;32m ${txt[4]}"
-echo -e "\033[33m [5] > \e[131m ${txt[5]}"
-echo -e "\033[33m [6] > \e[1;36 ${txt[6]} $AutoRun"
-echo -e "\033[33m [7] > \e[1;33 ${txt[7]}"
+echo -e "\033[33m [5] > \e[1;31m ${txt[5]}"
+echo -e "\033[33m [6] > \e[1;36m ${txt[6]} $AutoRun"
+echo -e "\033[33m [7] > \e[1;33m ${txt[7]}"
 echo -e "\033[33m [0] > \e[1;37m ${txt[12]}"
 msg -bar
 unset selection
