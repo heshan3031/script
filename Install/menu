@@ -121,7 +121,7 @@ done
 [[ -e /etc/texto-adm ]] && rm /etc/texto-adm
 echo "$(echo ${idioma[$selection]}|cut -d' ' -f1)" > ${SCPidioma}
 }
-fun_ip () {
+meu_ip () {
 if [[ -e /etc/MEUIPADM ]]; then
 IP="$(cat /etc/MEUIPADM)"
 else
@@ -152,7 +152,7 @@ _system=$(printf '%-14s' "$system")
 _hora=$(printf '%(%H:%M:%S)T')
 echo -e "\033[1;32mSISTEMA            MEMORIA RAM      PROCESSADOR "
 echo -e "\033[1;31mOS: \033[1;37m$_system \033[1;31mTotal:\033[1;37m$_ram \033[1;31mNucleos: \033[1;37m$_core\033[0m"
-echo -e "\033[1;31mIP: \033[1;34m$(fun_ip)  \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mCPU: \033[1;37m$_usop\e[0m"
+echo -e "\033[1;31mIP: \033[1;34m$(meu_ip)  \033[1;31mEn uso: \033[1;37m$_usor \033[1;31mCPU: \033[1;37m$_usop\e[0m"
 }
 BadVPN () {
 pid_badvpn=$(ps x | grep badvpn | grep -v grep | awk '{print $1}')
@@ -457,7 +457,7 @@ case $1 in
 "anti-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PROTECCION ANTI-DDOS";;
 "un-ddos.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "REMOVER ANTI-DDOS";;
 "paysnd.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "PAYLOAD PARA FUERZA BRUTA";;
-"panelRoot.sh")echo -ne "\033[1;32m [$2] > " && msg -ne "PERMISO ROOT/VULTR/GoogleCloud/Amazon/Azure";;
+"rootPanel.sh")echo -ne "\033[1;32m [$2] > " && msg -ne "PERMISO ROOT/VULTR/GoogleCloud/Amazon/Azure";;
 "apacheon.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "COMPARTILHAR ARQUIVO ONLINE") ";;
 "utils.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "Badvpn/tcpspeed/squidcache/torrent";;
 "speed.sh")echo -ne "\033[1;32m [$2] > " && msg -azu "$(fun_trans ${id} "TESTE DE VELOCIDADE") ";;
@@ -592,8 +592,8 @@ memorias
 msg -bar
 mine_port
 msg -bar3
-msg -ne "\033[33mSISTEMA: " && echo -e "$(os_system)  "
-msg -ne "\033[33mSERVIDOR IP: " && echo -e "$(fun_ip)"
+msg -ne "\033[33mSISTEMA: " && echo -e "$(os_system)"
+msg -ne "\033[33mSERVIDOR IP: " && echo -e "$(meu_ip)"
 [[ -e ${SCPdir}/USRonlines ]] && msg -ne "\033[33mUSUARIOS CONECTADOS: " && echo -e "\033[1;32m$(cat ${SCPdir}/USRonlines) "
 [[ -e ${SCPdir}/USRexpired ]] && msg -ne "\033[33mUSUARIOS VENCIDOS: " && echo -e "\033[1;31m$(cat ${SCPdir}/USRexpired)"
 msg -bar3
@@ -602,10 +602,10 @@ msg -bar3
 msg -ama "GOLDEN \e[1;31mNEWADM \e[36mBy @alexmod80 \033[97m] "
 msg -bar3
 echo -ne "\033[33m [1] > " && msg -verd "${txt[1]}"
-echo -ne "\033[33m [2] > " && msg -verm "${txt[2]}"
+echo -ne "\033[33m [2] > " && msg -ne "${txt[2]}"
 echo -ne "\033[33m [3] > " && msg -ama "${txt[3]}"
 echo -ne "\033[33m [4] > " && msg -verd "${txt[4]}"
-echo -ne "\033[33m [5] > " && msg -verm "${txt[5]}"
+echo -ne "\033[33m [5] > " && msg -ne "${txt[5]}"
 echo -ne "\033[33m [6] > " && msg -azu "${txt[6]} $AutoRun"
 echo -ne "\033[33m [7] > " && msg -azu "${txt[7]}"
 echo -ne "\033[33m [0] > " && msg -bra "${txt[12]}"
