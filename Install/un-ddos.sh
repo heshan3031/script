@@ -1,5 +1,5 @@
-echo; echo "Uninstalling DOS-Deflate"
-echo; echo; echo -n "Deleting script files....."
+echo; echo "DESISTALANDO DDOS-Deflate"
+echo; echo; echo -n "ELIMINANDO script DENTRO DEL ARCHIVO....."
 if [ -e '/usr/local/sbin/ddos' ]; then
 	rm -f /usr/local/sbin/ddos
 	echo -n ".."

@@ -2,17 +2,17 @@
 clear
 
 if [ -d '/usr/local/ddos' ]; then
-echo  "\033[33m=====================================================\033[1;37m"
-	echo; echo; echo "POR FAVOR, DESINSTALE LA VERSION ANTERIOR"
-echo  "\033[33m=====================================================\033[1;37m"
+echo  -e "\033[33m=====================================================\033[1;37m"
+	echo -e "POR FAVOR, DESINSTALE LA VERSION ANTERIOR"
+echo -e "\033[33m=====================================================\033[1;37m"
 	exit 0
 else
 	mkdir /usr/local/ddos
 fi
 clear
-echo  "\033[33m=====================================================\033[1;37m"
+echo -e "\033[33m=====================================================\033[1;37m"
 echo; echo 'INSTALANDO ANTI-DDOS [GOLDEN ADM PRO]'; echo
-echo  "\033[33m=====================================================\033[1;37m"
+echo  -e "\033[33m=====================================================\033[1;37m"
 echo; echo -n 'DESCARGANDO ARCHIVOS ...'
 wget -q -O /usr/local/ddos/ddos.conf http://www.inetbase.com/scripts/ddos/ddos.conf
 echo -n '.'
@@ -28,9 +28,9 @@ echo '...BIEN HECHO'
 echo; echo -n 'Creando Cronometro para que el Script Inicie el test cada minuto'
 /usr/local/ddos/ddos.sh --cron > /dev/null 2>&1
 echo '.....done'
-echo "\033[33m=====================================================\033[1;37m"
+echo -e "\033[33m=====================================================\033[1;37m"
 echo; echo 'INSTALACION ANTI-DDOS COMPLETADA CON EXITO'
 echo "\033[33m=====================================================\033[1;37m"
 echo 'EL ARCHIVO DE CONFIGURACION ESTA EN -> /usr/local/ddos/ddos.conf'
 echo 'DA GRACIAS A @alex  POR ESTA HERRAMIENTA DE PROTECCION'
-echo "\033[33m=====================================================\033[1;37m"
+echo -e "\033[33m=====================================================\033[1;37m"
