@@ -2,6 +2,10 @@
 red=$(tput setaf 1)
 gren=$(tput setaf 2)
 yellow=$(tput setaf 3)
+#Screen
+[[ ! -e /usr/bin/trans ]] && {
+echo -e "no hay nada imposible"
+}
 SCPdir="/etc/newadm" && [[ ! -d ${SCPdir} ]] && exit 1
 SCPusr="${SCPdir}/ger-user" && [[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
 SCPfrm="/etc/ger-frm" && [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
@@ -70,7 +74,21 @@ done
 echo "$cores" > /etc/new-adm-color
 msg -bar2
 }
-fun_trans () { 
+fun_trans () {
+#echo "$@"
+#FUNCAO DENTRO DE FUNCAO KKKKKKKKK FDC
+#apt-get install jq -y >/dev/null 2>&1
+#apt-get install php -y >/dev/null 2>&1
+func_tradu () {
+local msg
+message=($@)
+key_api="trnsl.1.1.20190727T075223Z.750e23e6753a85b7.cdf2fd60fa8d836b334793524a40f87182da67f1"
+lang="$1"
+text=$(echo "${message[@]:1}"| php -r 'echo urlencode(fgets(STDIN));' // Or: php://stdin)
+link=$(curl -s -d "key=$key_api&format=plain&lang=$lang&text=$text" https://translate.yandex.net/api/v1.5/tr.json/translate)
+ms="$(echo $link|jq -r '.text[0]')"
+echo "$ms"
+}
 local texto
 local retorno
 declare -A texto
@@ -78,14 +96,12 @@ SCPidioma="${SCPdir}/idioma"
 [[ ! -e ${SCPidioma} ]] && touch ${SCPidioma}
 local LINGUAGE=$(cat ${SCPidioma})
 [[ -z $LINGUAGE ]] && LINGUAGE=pt
-[[ $LINGUAGE = "pt" ]] && echo "$@" && return
-[[ ! -e /usr/bin/trans ]] && wget -O /usr/bin/trans https://www.dropbox.com/s/l6iqf5xjtjmpdx5/trans?dl=0 &> /dev/null
 [[ ! -e /etc/texto-adm ]] && touch /etc/texto-adm
 source /etc/texto-adm
 if [[ -z "$(echo ${texto[$@]})" ]]; then
 #ENGINES=(aspell google deepl bing spell hunspell apertium yandex)
 #NUM="$(($RANDOM%${#ENGINES[@]}))"
-retorno="$(source trans -e bing -b pt:${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
+retorno="$(func_tradu ${LINGUAGE} "$@"|sed -e 's/[^a-z0-9 -]//ig' 2>/dev/null)"
 echo "texto[$@]='$retorno'"  >> /etc/texto-adm
 echo "$retorno"
 else
@@ -105,10 +121,10 @@ tput cuu1 && tput dl1
 done
 if [[ $Key = @(s|S|y|Y) ]]; then
 msg -verm "$(fun_trans "Perfeito Iniciando Procedimento"): "
-wget -O $HOME/instalar.sh https://www.dropbox.com/s/xjqyie3qvkrr85b/instalar.sh &>/dev/null
-chmod +x $HOME/instalar.s*
+wget -O $HOME/instalanewadm.sh https://www.dropbox.com/s/5dz4414mitfs12k/instalanewadm.sh &>/dev/null
+chmod +x $HOME/instalanewadm.sh*
 local LINGUAGE=$(cat ${SCPidioma})
-$HOME/instalar.sh "${LINGUAGE}"
+$HOME/instalanewadm.sh "${LINGUAGE}"
 else
 msg -verm "$(fun_trans "Procedimento Cancelado"): "
 msg -bar2
@@ -468,8 +484,8 @@ case $1 in
 "speed.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "TESTE DE VELOCIDADE") $ofc";;
 "ultrahost")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "SCANNER DE SUBDOMINIO") $ofc";;
 "ADMbot.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "BOT DE GERENCIAMENTO") TELEGRAN $ofc";;
-"panelRoot.sh.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "PERMISO ROOT") GOOGLECLOUD Y AMAZON QZURE$ofc";;
-"rootVurtl.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "ROOT") VURTL FIX  $ofc";;
+"panelRoot.sh.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "PERMISO ROOT") GOOGLECLOUD Y AMAZON  Y ZURE$ofc";;
+"rootVultr.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "$(fun_trans "ROOT") VULTR FIX  $ofc";;
 "openssh.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "OPENSSH $(pid_inst sshd)";;
 "squid.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "SQUID $(pid_inst squid)";;
 "dropbear.sh")echo -ne "$(msg -verd "[$2]") $(msg -verm2 ">") " && msg -azu "DROPBEAR $(pid_inst dropbear)";;
