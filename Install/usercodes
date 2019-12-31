@@ -216,10 +216,12 @@ echo "$u"
 done
 }
 dropbear_pids () {
-unset pids
-port_dropbear=`ps aux | grep dropbear | awk NR==1 | awk '{print $17;}'`
-log=/var/log/auth.log
-loginsukses='Password auth succeeded'
+local pids
+local port_dropbear=`ps aux | grep dropbear | awk NR==1 | awk '{print $17;}'`
+cat /var/log/auth.log|grep "$(date|cut -d' ' -f2,3)" > /var/log/authday.log
+# cat /var/log/auth.log|tail -1000 > /var/log/authday.log
+local log=/var/log/authday.log
+local loginsukses='Password auth succeeded'
 [[ -z $port_dropbear ]] && return 1
 for port in `echo $port_dropbear`; do
  for pidx in $(ps ax |grep dropbear |grep "$port" |awk -F" " '{print $1}'); do
@@ -977,11 +979,12 @@ continue
 done
 source /tmp/txt && rm /tmp/txt
 }
+#EJECUCION
 if [[ "$1" = "verificar" ]]; then
 verif_fun
+exit
 fi
-VERY="$(ps aux|grep "${SCPusr}/usercodes verificar"| grep -v grep)"
-[[ -z ${VERY} ]] && verificar="\033[1;31mOff" || verificar="\033[1;32mOn"
+[[ -z ${VERY} ]] && verificar="\033[1;31m[ OFF ]" || verificar="\033[1;32m[ ON ]"
 [[ -z $1 ]] && textos_fun es || textos_fun $1
 msg -ama "${txt[7]}"
 msg -bar
