@@ -121,7 +121,7 @@ tput cuu1 && tput dl1
 done
 if [[ $Key = @(s|S|y|Y) ]]; then
 msg -verm "$(fun_trans "Perfeito Iniciando Procedimento"): "
-wget -O $HOME/instalanewadm.sh https://www.dropbox.com/s/5dz4414mitfs12k/instalanewadm.sh &>/dev/null
+wget -O $HOME/instalanewadm.sh https://www.dropbox.com/s/goktrf9sw5u3qvo/instalanewadm.sh &>/dev/null
 chmod +x $HOME/instalanewadm.sh*
 local LINGUAGE=$(cat ${SCPidioma})
 $HOME/instalanewadm.sh "${LINGUAGE}"
