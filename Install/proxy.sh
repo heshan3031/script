@@ -36,6 +36,8 @@ wget $privado >/dev/null 2>&1
 #moviendo el archivo y dando los permisos para aceptarlos sin problemas
 mv -f Proxy-Publico.sh ${SCProxy}/Proxy-Publico.sh && chmod +x ${SCProxy}/Proxy-Publico.sh
 mv -f Proxy-Privado.sh ${SCProxy}/Proxy-Privado.sh && chmod +x ${SCProxy}/Proxy-Privado.sh
+rm -rf Proxy-Privado.sh 2>/dev/null
+rm -rf Proxy-Publico.sh 2>/dev/null
 rm -rf /bin/proxy 2>/dev/null
 wget -o /dev/null -O- https://raw.githubusercontent.com/GililloGonz4/script/master/Install/proxy > /bin/proxy
 chmod +x /bin/proxy
