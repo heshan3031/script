@@ -1,7 +1,7 @@
 #!/bin/bash
 #creando carpetas
-Block="/etc/alexmod80" && [[ ! -d ${Block} ]] && mkdir ${Block}
-SCProxy="/etc/proxy/python/alexmod80" && [[ ! -d ${SCProxy} ]] && mkdir ${SCProxy}
+Alex="/etc/alexmod80" && [[ ! -d ${Alex} ]] && mkdir ${Alex}
+SCProxy="/etc/proxymx" && [[ ! -d ${SCProxy} ]] && mkdir ${SCProxy}
 
 #SCRIPT PROXY COLOR PYTHON
 #YA LOS COLORES YA ESTAN MODIFICADOS Y YA SON ACEPTADOS EN EL BANNER DEL PROXY

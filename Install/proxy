@@ -1,8 +1,8 @@
 #!/bin/bash
-Block="/etc/alexmod80" && [[ ! -d ${Block} ]] && exit
-Block > /dev/null 2>&1
+Alex="/etc/alexmod80" && [[ ! -d ${Alex} ]] && exit
+Alex > /dev/null 2>&1
 barra="\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
-SCProxy="/etc/proxy/python/alexmod80" && [[ ! -d ${SCProxy} ]] && exit
+SCProxy="/etc/proxymx" && [[ ! -d ${SCProxy} ]] && exit
 #creating :14/05/2020
 #autor : Alexmod80
 remove(){
