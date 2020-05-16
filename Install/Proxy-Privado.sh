@@ -1,9 +1,31 @@
 #!/bin/bash
 Block="/etc/alexmod80" && [[ ! -d ${Block} ]] && exit
 Block > /dev/null 2>&1
-echo -e "esta herramienta le cambia y da color al status de conexion\n puertos proxys disponibles 80,1080,881,8799, los puertos para usar 22,441,110\n los puertos tienen que estar abiertos en ssh o en dropbear"
+fun_bar () {
+comando="$1"
+ _=$(
+$comando > /dev/null 2>&1
+) & > /dev/null
+pid=$!
+while [[ -d /proc/$pid ]]; do
+echo -ne " \033[1;33m["
+   for((i=0; i<10; i++)); do
+   echo -ne "\033[1;31m##"
+   sleep 0.2
+   done
+echo -ne "\033[1;33m]"
+sleep 1s
+echo
+tput cuu1 && tput dl1
+done
+echo -e " \033[1;33m[\033[1;31m####################\033[1;33m] - \033[1;32m100%\033[0m"
+sleep 1s
+}
+clear
+echo -e "esta herramienta le cambia y da color al status de conexion\n y agrega una contrasena atu payload para mayor seguridad\nproxys disponibles 80,881,1080"
 BARRA="\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
 echo -e "\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
+echo ""
 if [[ ! -e /usr/bin/python ]]; then
 echo -e "Introduca Estos Comandos En La Terminal"
 echo -e "apt-get install python -y"
@@ -12,8 +34,23 @@ exit
 fi
 echo -e "\033[1;31mPROXY PYTHON COLOR\033[0m"
 echo -e "$BARRA"
-echo -ne "Introduzca el puerto: "
+echo -ne "Introduzca el proxy python: "
 read port
+echo -e "$BARRA"
+echo -e "\033[1;37m22 (default privado) (443 público)\nejemplo de redireccion de puerto de escucha 22,443 o otra"
+echo -e "$BARRA"
+echo -ne "Introduzca el puerto de redirecion: "
+read porta
+echo -e "$BARRA"
+echo -e "\033[1;31mATENCION:\n\033[1;34mPara Utilizar Este Proxy Es Necesario Agregar Una Linea A Su Payload\033[0m"
+echo -e "$BARRA"
+echo -ne "Escriba Una Contrasena Para El Proxy: "
+read ipdns
+if [[ ! -z $ipdns ]]; then
+echo -e "$BARRA"
+echo -e "\033[1;34mAGREGUE ESTA LINEA AL INICIO DE SU PAYLOAD:\n\033[1;36m[crlf]X-Pass: $ipdns[crlf]\n\033[0m"
+echo -e "\033[1;31mEJEMPLO:\n\033[1;33m\033[1;36m[crlf]X-Pass: $ipdns[crlf]GET http://tuhost.com/ HTTP/1.0 [crlf]\033[0m"
+fi
 while [[ -z $FMSG || $FMSG = @(s|S|y|Y) ]]; do
 echo -e "$BARRA"
 echo -ne "Introduzca Un Mensaje De Conexion: "
@@ -65,10 +102,10 @@ import socket, threading, thread, select, signal, sys, time, getopt
 
 LISTENING_ADDR = '0.0.0.0'
 LISTENING_PORT = int("$port")
-PASS = ''
+PASS = str("$ipdns")
 BUFLEN = 4096 * 4
 TIMEOUT = 60
-DEFAULT_HOST = '127.0.0.1:22'
+DEFAULT_HOST = '127.0.0.1:$porta'
 msg = "HTTP/1.1 200 <strong>($RETORNO)</strong>\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 !!!conexion exitosa!!!\r\n\r\n"
 RESPONSE = str(msg)
 
@@ -225,8 +262,8 @@ class ConnectionHandler(threading.Thread):
             host = host[:i]
         else:
             if self.method=='CONNECT':
-                port = 22
                 port = 441
+                port = 443
                 port = 110
             else:
                 port = 80
@@ -308,6 +345,5 @@ if __name__ == '__main__':
 PYTHON
 ) > $HOME/proxy.log &
 echo -e "$BARRA"
-echo "Proxy Iniciado Con Exito"
-echo "Listen 0.0.0.0:${port} ..."
+echo -e "\e[1;31mProxy Iniciado Con Exito\e[0m"
 echo

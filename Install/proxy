@@ -1,0 +1,53 @@
+#!/bin/bash
+Block="/etc/alexmod80" && [[ ! -d ${Block} ]] && exit
+Block > /dev/null 2>&1
+barra="\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
+SCProxy="/etc/proxycl" && [[ ! -d ${SCProxy} ]] && exit
+#creating :14/05/2020
+#autor : Alexmod80
+remove(){
+echo -e "\e[37mParando Socks Python"
+pkill python && killall python
+echo -e "\033[1;37m  Desinstalacion Completada \033[0m"
+}
+#menú de opciones
+
+echo -e "\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
+echo -e "\e[1;37mMENÚ DE INSTALACION\nPYTHON SOCKS COLORIDO\nSCRIPT CREADO OFICIALMENTE X @Alexmod80"
+echo -e "\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[0m"
+echo -e "\e[1;31m(-1-)\e[1;33m PROXY COLOR PÚBLICO"
+echo -e "\e[1;31m(-2-)\e[1;33m PROXY COLOR PRIVADO"
+echo -e "\e[1;31m(-3-)\e[1;33m ELIMINAR PROXY PYTHON"
+echo -e "\e[1;31m(-0-)\e[1;37m SALIR"
+echo -e "\e[0;31m➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖\e[1;37m"
+echo -n "❉ELIJA UNA OPCION❉:  "
+#OPCION PARA ELEJIR UNA DE LAS OPCIONES
+read proxis
+case $proxis in
+1)
+${SCProxy}/Proxy-Publico.sh
+sleep 1
+screen -dmS proxy python ${SCProxy}/Proxy-Publico.sh
+sleep 2
+echo -e "$barra"
+echo -e "PROXY PUBLICA ACTIVADO"
+echo -e "$barra"
+exit
+;;
+2)
+${SCProxy}/Proxy-Privado.sh
+sleep 1
+screen -dmS proxy python ${SCProxy}/Proxy-Privado.sh
+sleep 2
+echo -e "$barra"
+echo -e "PROXY PRIVADO ACTIVADO"
+echo -e "$barra"
+exit
+;;
+3)
+remove
+;;
+0)
+exit
+;;
+esac
