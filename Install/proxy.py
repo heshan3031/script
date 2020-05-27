@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # encoding: utf-8
-# newadmin By @Alexmod
+# newadmin By @Alexmod80
+#canal telegram: @ConectedMX_Vip
+#canal telegram: @conectedmx
 import socket, threading, thread, select, signal, sys, time, getopt
 
 LISTENING_ADDR = '0.0.0.0'
@@ -12,7 +14,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 MSG = 'By@Alexmod80'
-COR = '<font color="red">'
+COR = '<font color="green">'
 FTAG = '</font>'
 DEFAULT_HOST = '127.0.0.1:22'
 RESPONSE = "HTTP/1.1 200 " + str(COR) + str(MSG) + str(FTAG) + "\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 !!!conexion exitosa!!!\r\n\r\n"
