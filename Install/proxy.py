@@ -8,8 +8,6 @@ import socket, threading, thread, select, signal, sys, time, getopt
 LISTENING_ADDR = '0.0.0.0'
 if sys.argv[1:]:
    LISTENING_PORT = int(sys.argv[1])
-else:
-   LISTENING_PORT = 80
 PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
@@ -173,8 +171,7 @@ class ConnectionHandler(threading.Thread):
         else:
             if self.method=='CONNECT':
                 port = 22
-                port = 441
-                port = 110
+                port = 443
             else:
                 port = 80
                 port = 1080
