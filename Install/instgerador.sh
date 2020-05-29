@@ -87,7 +87,7 @@ echo "$Key" > $IVAR2
 rm $HOME/lista-arq
 echo -e "$BARRA"
 echo "/usr/bin/gerar.sh" > /usr/bin/gen && chmod +x /usr/bin/gen
-echo -e "\033[1;33m Perfecto, Use el Comando \033[1;31malex \033[1;33mpara Generar Sus Keys"
+echo -e "\033[1;33m Perfecto, Use el Comando \033[1;31mgen \033[1;33mpara Generar Sus Keys"
 echo -e "$BARRA"
 } || {
 echo -e "$BARRA"
