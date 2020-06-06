@@ -12,7 +12,7 @@ PASS = ''
 BUFLEN = 4096 * 4
 TIMEOUT = 60
 MSG = 'By@Alexmod80'
-COR = '<font color="green">'
+COR = '<font color="purple">'
 FTAG = '</font>'
 DEFAULT_HOST = '127.0.0.1:22'
 RESPONSE = "HTTP/1.1 200 " + str(COR) + str(MSG) + str(FTAG) + "\r\nContent-length: 0\r\n\r\nHTTP/1.1 200 !!!conexion exitosa!!!\r\n\r\n"
@@ -170,7 +170,6 @@ class ConnectionHandler(threading.Thread):
             host = host[:i]
         else:
             if self.method=='CONNECT':
-                port = 22
                 port = 443
             else:
                 port = 80
