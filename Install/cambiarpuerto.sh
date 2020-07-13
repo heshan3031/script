@@ -1,4 +1,7 @@
 #!/bin/bash
+#by alexmod80
+#grupos telegram: @conectedmx @conectedmx_vip
+#este escript es solo para verificar el protocolo que tenemos abiertos y para poder modificarlos
 declare -A cor=( [0]="\033[33m" [1]="\033[33m" [2]="\033[33m" [3]="\033[33m" [4]="\033[33m" )
 barra="\033[0m\e[33m======================================================\033[1;37m"
 #script, cambiar puerto
@@ -15,7 +18,7 @@ SEMCOR='\e[0m'
   -azu)cor="${MAG}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -verd)cor="${VERDE}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
   -bra)cor="${BRAN}${NEGRITO}" && echo -e "${cor}${2}${SEMCOR}";;
-  "-bar2"|"-bar")cor="${AZUL}======================================================" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
+  "-bar2"|"-bar")cor="${VERMELHO}======================================================" && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
 puertos_pro(){
@@ -41,9 +44,6 @@ SSH+="$Port ";;
 dropbear)
 [[ -z $DPB ]] && local DPB="\033[1;36m➫ \e[1;37mDROPBEAR:\033[1;32m"
 DPB+="$Port ";;
-nc.tradit)
-[[ -z $GEN ]] && local GEN="\033[1;36m➫ \e[1;37mKEYGEN:\033[1;32m"
-GEN+="$Port ";;
 openvpn)
 [[ -z $OVPN ]] && local OVPN="\033[1;36m➫ \e[1;37mOPENVPN-TCP:\033[1;32m"
 OVPN+="$Port ";;
@@ -109,8 +109,8 @@ NEWCONF="$(cat ${CONF}|grep -v "http_port")"
 msg -ne "SU NUEVA PUERTA: "
 read -p "" newports
 for PTS in `echo ${newports}`; do
-verify_port squid "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mOK" || {
-echo -e "\033[1;33mPUERTA $PTS \033[1;31mFAIL"
+verify_port squid "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mCAMBIADO CON EXITO" || {
+echo -e "\033[1;33mPUERTA $PTS \033[1;31mFALLIDA"
 return 1
 }
 done
@@ -139,8 +139,8 @@ local NEWCONF="$(cat ${CONF})"
 msg -ne "SU NUEVO PUERTO SERIA?: "
 read -p "" newports
 for PTS in `echo ${newports}`; do
-verify_port apache "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mOK" || {
-echo -e "\033[1;33mPUERTA $PTS \033[1;31mFAIL"
+verify_port apache "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mCAMBIADO CON EXITO" || {
+echo -e "\033[1;33mPUERTA $PTS \033[1;31mFALLIDA"
 return 1
 }
 done
@@ -175,8 +175,8 @@ local NEWCONF2="$(cat ${CONF2})"
 msg -ne "SU NUEVO PUERTO ES?: "
 read -p "" newports
 for PTS in `echo ${newports}`; do
-verify_port openvpn "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mOK" || {
-echo -e "\033[1;33mPUERTA $PTS \033[1;31mFAIL"
+verify_port openvpn "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mCAMBIADO CON EXITO" || {
+echo -e "\033[1;33mPUERTA $PTS \033[1;31mFALLIDA"
 return 1
 }
 done
@@ -212,8 +212,8 @@ local NEWCONF="$(cat ${CONF}|grep -v "DROPBEAR_EXTRA_ARGS")"
 msg -ne "SU NUEVO PUERTO ES?: "
 read -p "" newports
 for PTS in `echo ${newports}`; do
-verify_port dropbear "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mOK" || {
-echo -e "\033[1;33mPUERTA $PTS \033[1;31mFAIL"
+verify_port dropbear "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mCAMBIADO CON EXITO" || {
+echo -e "\033[1;33mPUERTA $PTS \033[1;31mFALLIDA"
 return 1
 }
 done
@@ -244,8 +244,8 @@ local NEWCONF="$(cat ${CONF}|grep -v [Pp]ort)"
 msg -ne "SU NUEVO PUERTO ES: "
 read -p "" newports
 for PTS in `echo ${newports}`; do
-verify_port sshd "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mOK" || {
-echo -e "\033[1;33mPUERTA $PTS \033[1;31mFAIL"
+verify_port sshd "${PTS}" && echo -e "\033[1;33mPUERTA $PTS \033[1;32mCAMBIADO CON EXITO" || {
+echo -e "\033[1;33mPUERTA $PTS \033[1;31mFALLIDA"
 return 1
 }
 done
@@ -266,6 +266,7 @@ msg -azu "PUERTAS REDEFINIDAS"
 msg -bar
 }
 puertos_pro
+echo -e "\e[1;33m        MENU PARA MODIFICAR EL PROTOCOLO"
 main_fun () {
 unset newports
 i=0
