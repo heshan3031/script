@@ -56,7 +56,7 @@ echo "<p>Estado del servicio badvpn está ||  $badvpn </span>.</p> " >> $DIR/$AR
 #SERVICE BADVPN
 PIDVRF3="$(ps aux|grep badvpn |grep -v grep|awk '{print $2}')"
 if [[ -z $PIDVRF3 ]]; then
-screen -dmS badvpn2 /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 100
+screen -dmS badvpn2 /bin/badvpn-udpgw --listen-addr 127.0.0.1:7300 --max-clients 1000 --max-connections-for-client 50
 else
 for pid in $(echo $PIDVRF3); do
 echo""
