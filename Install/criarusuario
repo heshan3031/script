@@ -33,7 +33,7 @@ useradd -M -s /bin/false $name -e $valid
 ( echo "$pass";echo "$pass" ) | passwd $name 2> /dev/null
 limite $name $limiteuser
 clear
-cat /etc/VpsPackdir/logo
+cat /etc/VpsPackdir/stafiglet
 echo -e " "
 echo -e "\033[1;37m      【     ★ VPSPack ★     】\033[0m"
 echo -e "[\033[1;31m-\033[1;33m]\033[1;31m ═───────◇───────═\033[1;33m"
