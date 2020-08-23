@@ -16,12 +16,16 @@ make
 make test
 make install
 sudo apt-get install libssl-dev
+sleep 2s
 wget https://raw.githubusercontent.com/Psiphon-Labs/psiphon-tunnel-core-binaries/master/psiphond/psiphond
 chmod 555 psiphond
+sleep 3s
 ./psiphond --ipaddress 0.0.0.0 --web 8625 --protocol SSH:3001 --protocol OSSH:3002 --protocol FRONTED-MEEK-OSSH:443 generate
+sleep 4s
 chmod 666 psiphond.config
 chmod 666 psiphond-traffic-rules.config
 chmod 666 psiphond-osl.config
 chmod 666 psiphond-tactics.config
 chmod 666 server-entry.dat/
+sleep 5s
 echo "INSTALADO CON EXITO"
