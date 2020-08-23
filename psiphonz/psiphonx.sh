@@ -29,3 +29,4 @@ chmod 666 psiphond-tactics.config
 chmod 666 server-entry.dat/
 sleep 5s
 echo "INSTALADO CON EXITO"
+rm -rf openssl-1.0.2l.tar.gz
