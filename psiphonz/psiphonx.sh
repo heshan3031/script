@@ -4,6 +4,7 @@ MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1
 MIP2=$(wget -qO- ipv4.icanhazip.com)
 [[ "$MIP" != "$MIP2" ]] && IP="$MIP2" || IP="$MIP"
 }
+fun_ip
 echo -e "\e[1;37m"
 echo " INICIANDO LA INSTALACION"
 sudo apt-get install python-pip
