@@ -169,16 +169,15 @@ msg -bar
 }
 
 msg -bar
-echo -e "\e[1;37m [1] = ABRIR PUERTO SSL"
-echo -e "\e[1;37m [2] = AGREGAR MAS PUERTOS SSL"
-echo -e "\e[1;32m [3] = REDIRECIONAR SSL"
-echo -e "\e[1;31m [4] = DETENER PUERTO SSL"
-echo -e "\e[1;37m [0] = SALIR"
+echo -e "\e[1;37m [1] = ABRIR PUERTO SSL\e[0m"
+echo -e "\e[1;37m [2] = AGREGAR MAS PUERTOS SSL\e[0m"
+echo -e "\e[1;32m [3] = REDIRECIONAR SSL\e[0m"
+echo -e "\e[1;31m [4] = DETENER PUERTO SSL\e[0m"
+echo -e "\e[1;37m [0] = SALIR\e[0m"
 msg -bar
 while [[ ${varread} != @([0-3]) ]]; do
 read -p "SELECIONE: " varread
 done
-msg -bar
 if [[ ${varread} = 0 ]]; then
 exit
 elif [[ ${varread} = 1 ]]; then
