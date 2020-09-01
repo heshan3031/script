@@ -169,14 +169,14 @@ msg -bar
 }
 
 msg -bar
-msg -bra "[1] = ABRIR PUERTO SSL"
-msg -bra "[2] = AGREGAR MAS PUERTOS SSL"
-msg -verd "[3] = REDIRECIONAR SSL"
-msg -verm2 "[4] = DETENER PUERTO SSL"
-msg -bra "[0] = SALIR"
+echo -e "\e[1;37m [1] = ABRIR PUERTO SSL"
+echo -e "\e[1;37m [2] = AGREGAR MAS PUERTOS SSL"
+echo -e "\e[1;32m [3] = REDIRECIONAR SSL"
+echo -e "\e[1;31m [4] = DETENER PUERTO SSL"
+echo -e "\e[1;37m [0] = SALIR"
 msg -bar
 while [[ ${varread} != @([0-3]) ]]; do
-read -p "Opcion: " varread
+read -p "SELECIONE: " varread
 done
 msg -bar
 if [[ ${varread} = 0 ]]; then
