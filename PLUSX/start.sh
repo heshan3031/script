@@ -11,7 +11,7 @@ start_bot () {
 unset PIDBOT
 PIDBOT=$(ps aux|grep -v grep|grep "bott")
 if [[ ! $PIDBOT ]]; then
-screen -dmS verybot /etc/bot/bott "$token" "id"
+screen -dmS verybot /etc/bot/bott "$token" "$id"
 echo "	BOT ENCENDIDA"
 else
 killall bott
