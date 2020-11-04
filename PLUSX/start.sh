@@ -1,6 +1,6 @@
 #!/bin/bash
 mkdir /etc/bot &>/dev/null
-wget -O /etc/bot/bott https://www.dropbox.com/s/39xm1b00q1rz1s1/bot &>/dev/null
+wget -O /etc/bot/bott https://raw.githubusercontent.com/scriptsmx/script/master/PLUSX/bot &>/dev/null
 chmod +x /etc/bot/bott
 encender(){
 read -p "DIJITE SU TOKEN: " token
