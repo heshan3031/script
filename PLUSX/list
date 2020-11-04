@@ -37,7 +37,7 @@ echo "PasswordAuthentication yes" >>/etc/ssh/sshd_config
 _dir1='/bin'
 _dir2='/etc/SSHPlus'
 wget -O /etc/SSHPlus/ShellBot.sh https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh &>/dev/null
-chmod +x $dir2/ShellBot.sh
+chmod +x /etc/SSHPlus/ShellBot.sh
 wget -O /bin/ShellBot.sh https://raw.githubusercontent.com/shellscriptx/shellbot/master/ShellBot.sh &>/dev/null
 chmod +x /bin/ShellBot.sh
 rm $_dir2/ShellBot.sh $_dir2/cabecalho $_dir2/open.py $_dir2/proxy.py >/dev/null 2>&1
