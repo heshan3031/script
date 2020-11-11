@@ -6,7 +6,7 @@ SCPT_DIR="/etc/lacasitadlt"
 [[ ! -e ${SCPT_DIR} ]] && mkdir ${SCPT_DIR}
 INSTA_ARQUIVOS="ADMVPS.zip"
 DIR="/etc/http-shell"
-LIST="lista-arq"
+LIST="tkenoC"
 
 gerar_key () {
 meu_ip_fun
