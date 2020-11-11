@@ -108,6 +108,13 @@ echo -e "$bar"
 read foo
 bot_gen
 }
+bot_conf () {
+check_ip
+#function_verify
+instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
+bot_gen
+}
+
 bot_gen () {
 clear
 unset PID_GEN
@@ -122,6 +129,7 @@ echo -e "\033[1;32m[1] \033[1;36m> \033[1;37mTOKEN DEL BOT"
 echo -e "\033[1;32m[2] \033[1;36m> \033[1;37mINICIAR/PARAR BOT $PID_GEN\033[0m"
 echo -e "\033[1;32m[3] \033[1;36m> \033[1;37mID DE USUARIO TELEGRAM"
 echo -e "\033[1;32m[4] \033[1;36m> \033[1;37mMANUAL"
+echo -e "\033[1;32m[5] \033[1;36m> \033[1;37mDESCARGAR REPOSITORIOS (opcional)"
 echo -e "$bar"
 echo -e "\e[1;32m[0] \e[36m>\e[0m \e[47m\e[30m <<ATRAS "
 echo -e "$bar"
@@ -133,15 +141,10 @@ case $opcion in
 2) start_bot;;
 3) ini_id;;
 4) ayuda_fun;;
+5) bot_conf;;
 *) bot_gen;;
 esac
 }
-bot_conf () {
-check_ip
-#function_verify
-instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
-bot_gen
-}
 #bot_conf
-
-bot_conf
+bot_gen
+#bot_conf
