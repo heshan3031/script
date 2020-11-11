@@ -113,7 +113,6 @@ bot_conf () {
 check_ip
 #function_verify
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
-bot_gen
 }
 bot_conf
 bot_gen () {
@@ -144,3 +143,4 @@ case $opcion in
 *) bot_gen;;
 esac
 }
+bot_gen
