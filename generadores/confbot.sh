@@ -15,6 +15,7 @@ echo "$IP" > /usr/bin/vendor_code
 
 
 veryfy_fun () {
+mkdir /etc/ADM.db &>/dev/null
 SRC="/etc/ADM-db/sources" && [[ ! -d ${SRC} ]] && mkdir ${SRC}
 unset ARQ
 case $1 in
