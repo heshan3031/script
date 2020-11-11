@@ -5,5 +5,5 @@ update () {
 chmod +x $HOME/update.sh
 screen -dmS updateBotGen $HOME/update.sh
 sleep 2
-killall BotGen.sh
+#killall BotGen.sh
 }
