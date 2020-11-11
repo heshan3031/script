@@ -12,7 +12,22 @@ MIP2=$(wget -qO- ipv4.icanhazip.com)
 echo "$IP" > /usr/bin/vendor_code
 }
 
-
+function_verify () {
+  permited=$(curl -sSL "https://raw.githubusercontent.com/scriptsmx/script/master/generadores/control/Control-Bot")
+  [[ $(echo $permited|grep "${IP}") = "" ]] && {
+  clear
+  echo -e "\n\n\n\e[31m====================================================="
+  echo -e "\e[31m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) NO ESTA AUTORIZADA!\n     SI DESEAS USAR EL BOTGEN CONTACTE A @"
+  echo -e "\e[31m=====================================================\n\n\n\e[0m"
+  [[ -d /etc/ADM-db ]] && rm -rf /etc/ADM-db
+[[ ! -e "/bin/ShellBot.sh" ]] && rm /bin/ShellBot.sh
+  exit 1
+  } || {
+  ### INTALAR VERCION DE SCRIPT
+  v1=$(curl -sSL "https://raw.githubusercontent.com/scriptsmx/script/master/generadores/control/Vercion")
+  echo "$v1" > /etc/ADM-db/vercion
+  }
+}
 
 veryfy_fun () {
 mkdir /etc/ADM-db &>/dev/null
@@ -110,7 +125,7 @@ bot_gen
 }
 bot_conf () {
 check_ip
-#function_verify
+function_verify
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
 bot_gen
 }
