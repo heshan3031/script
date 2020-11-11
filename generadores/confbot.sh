@@ -19,8 +19,8 @@ function_verify () {
   echo -e "\n\n\n\e[31m====================================================="
   echo -e "\e[31m      ¡LA IP $(wget -qO- ipv4.icanhazip.com) NO ESTA AUTORIZADA!\n     SI DESEAS USAR EL BOTGEN CONTACTE A @"
   echo -e "\e[31m=====================================================\n\n\n\e[0m"
-  [[ -d /etc/ADM-db ]] && rm -rf /etc/ADM-db
-[[ ! -e "/bin/ShellBot.sh" ]] && rm /bin/ShellBot.sh
+  #[[ -d /etc/ADM-db ]] && rm -rf /etc/ADM-db
+[[ ! -e "/bin/ShellBot.sh" ]] && rm -rf /bin/ShellBot.sh
   exit 1
   } || {
   ### INTALAR VERCION DE SCRIPT
@@ -123,9 +123,10 @@ echo -e "$bar"
 read foo
 bot_gen
 }
+function_verify
 bot_conf () {
 check_ip
-function_verify
+
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
 bot_gen
 }
