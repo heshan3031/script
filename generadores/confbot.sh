@@ -15,7 +15,7 @@ echo "$IP" > /usr/bin/vendor_code
 
 
 veryfy_fun () {
-mkdir /etc/ADM.db &>/dev/null
+mkdir /etc/ADM-db &>/dev/null
 SRC="/etc/ADM-db/sources" && [[ ! -d ${SRC} ]] && mkdir ${SRC}
 unset ARQ
 case $1 in
@@ -46,7 +46,7 @@ done
  }
  rm $HOME/lista-arq
 }
-download
+#download
 ini_token () {
 clear
 echo -e "$bar"
