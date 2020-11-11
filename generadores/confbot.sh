@@ -142,3 +142,4 @@ case $opcion in
 *) bot_gen;;
 esac
 }
+bot_gen
