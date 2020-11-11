@@ -3,7 +3,8 @@
 SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3NjcmlwdHNteC9zY3JpcHQvbWFzdGVyL2dlbmVyYWRvcmVzL3JlcG9z"
 SUB_DOM='base64 -d'
 bar="\e[0;36m=====================================================\e[0m"
-
+wget -O /bin/ShellBot.sh https://raw.githubusercontent.com/scriptsmx/script/master/generadores/ShellBot.sh &> /dev/null
+chmod +x /bin/ShellBot.sh
 check_ip () {
 MIP=$(ip addr | grep 'inet' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o -E '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | head -1)
 MIP2=$(wget -qO- ipv4.icanhazip.com)
