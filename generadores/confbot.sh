@@ -114,14 +114,14 @@ check_ip
 #function_verify
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
 }
-bot_conf
+#bot_conf
 bot_gen () {
 clear
 unset PID_GEN
 PID_GEN=$(ps x|grep -v grep|grep "BotGen.sh")
 [[ ! $PID_GEN ]] && PID_GEN="\033[1;31moffline" || PID_GEN="\033[1;32monline"
 
-CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
+#CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
 echo -e "$bar"
 echo -e "     \e[47m \e[30m>>>>>>  BotGen by \e[1;36mRufu99\e[1;32m  $(cat ${CIDdir}/vercion)\e[0m\e[47m \e[30m<<<<<< \e[0m"
 echo -e "$bar"
@@ -143,4 +143,5 @@ case $opcion in
 *) bot_gen;;
 esac
 }
+bot_conf
 bot_gen
