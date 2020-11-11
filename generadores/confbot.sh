@@ -116,7 +116,7 @@ PID_GEN=$(ps x|grep -v grep|grep "BotGen.sh")
 
 CIDdir=/etc/ADM-db && [[ ! -d ${CIDdir} ]] && mkdir ${CIDdir}
 echo -e "$bar"
-echo -e "     \e[47m \e[30m>>>>>>  BotGen by \e[1;36mRufu99"\e[0m\e[47m \e[30m<<<<<< \e[0m"
+echo -e "     \e[47m \e[30m>>>>>>  BotGen by \e[1;36mRufu99\e[0m\e[47m \e[30m<<<<<< \e[0m"
 echo -e "$bar"
 echo -e "\033[1;32m[1] \033[1;36m> \033[1;37mTOKEN DEL BOT"
 echo -e "\033[1;32m[2] \033[1;36m> \033[1;37mINICIAR/PARAR BOT $PID_GEN\033[0m"
