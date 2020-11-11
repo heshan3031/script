@@ -44,7 +44,7 @@ done
  }
  rm $HOME/lista-arq
 }
-
+download
 ini_token () {
 clear
 echo -e "$bar"
@@ -109,11 +109,11 @@ bot_gen
 
 bot_conf () {
 check_ip
-function_verify
+#function_verify
 instaled=/etc/ADM-db/sources && [[ ! -d ${instaled} ]] && download
 bot_gen
 }
-
+bot_conf
 bot_gen () {
 clear
 unset PID_GEN
@@ -134,7 +134,7 @@ echo -e "$bar"
 echo -n "Opcion: "
 read opcion
 case $opcion in
-0) ;;
+0) return 0 ;;
 1) ini_token;;
 2) start_bot;;
 3) ini_id;;
@@ -142,4 +142,3 @@ case $opcion in
 *) bot_gen;;
 esac
 }
-bot_gen
