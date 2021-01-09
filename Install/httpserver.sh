@@ -97,7 +97,7 @@ fi #VERIFICA SE O IP E VARIAVEL
 if [[ $(cat $DIRETORIOKEY/used) != "$USRIP" ]]; then
   #IP INVALIDO BLOQUEIA INSTALACAO
   log="/etc/gerar-sh-log"
-  echo "USUARIO: $(cat $DIRETORIOKEY.name) IP FIXO: $(cat $DIRETORIOKEY/keyfixa) IP: $USRIP" >> $log
+  echo "EL USUARIO: $(cat $DIRETORIOKEY.name) FIJA: $(cat $DIRETORIOKEY/keyfixa) IP: $USRIP" >> $log
   echo "SU KEY FIJA FUE BLOQUEADA" >> $log
   echo "--------------------------------------------------------------------" >> $log
   rm -rf ${DIRETORIOKEY}*
